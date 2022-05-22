@@ -21,7 +21,7 @@ export const AuthPage = () =>{
     }
 
     return(
-        <div>
+        <div className="container">
             <h1>DiSP</h1>
             <label htmlFor="email"><b>Email</b></label><br/>
             <input type="email" placeholder="Enter email"

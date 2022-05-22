@@ -13,7 +13,7 @@ function App() {
     return (
         <AuthContext.Provider value={{token, login, logout}}>
           <Router>
-            <div className="container">
+            <div>
                 {routes}
             </div>
           </Router>
