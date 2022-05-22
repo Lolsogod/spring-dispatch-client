@@ -1,3 +1,39 @@
+:root {
+  --dark: #1B1F23;
+  --main: #6DB33F;
+  --main2: #444444;
+  --main3: #EDEDED;
+}
+.container{
+  margin: auto;
+  max-width: 500px;
+  text-align: center;
+}
+body{
+  background: var(--dark);
+  color: var(--main);
+}
+/*buttons*/
+button{
+  background-color: var(--main);
+  padding: 0.4rem;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.5s background-color;
+  color: black;
+}
+
+button:hover{
+  color: white;
+  background-color: #4D802D
+}
+
+button:active {
+  color: white;
+  background-color: #2E4D1B;
+}
+/*app*/
 .App {
   text-align: center;
 }
