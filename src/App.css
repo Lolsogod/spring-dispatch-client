@@ -1,8 +1,8 @@
 :root {
   --dark: #1B1F23;
   --main: #6DB33F;
-  --main2: #444444;
-  --main3: #EDEDED;
+  --main2: #1F2327;
+  --main3: #262A2D;
 }
 .container{
   margin: auto;
@@ -15,6 +15,7 @@ body{
 }
 /*buttons*/
 button{
+  border-radius: .25rem;
   background-color: var(--main);
   padding: 0.4rem;
   border: none;
@@ -30,6 +31,17 @@ button:hover{
 button:active {
   color: white;
   background-color: #2E4D1B;
+}
+.btnRed{
+  background-color: #b33f3f;
+}
+.btnRed:hover{
+  color: white;
+  background-color: #802d2d
+}
+.btnRed:active {
+  color: white;
+  background-color: #4d1b1b;
 }
 /*top*/
 .schedulePageContainer{
@@ -65,18 +77,20 @@ button:active {
   background-color: #3c464f !important;
 }
 .item:nth-child(odd) {
-  background-color: #545454;
+  background-color: var(--main2);
 }
 .item:nth-child(even) {
-  background-color: #2f2f2f;
+  background-color: var(--main3);
 }
 .item{
+  overflow: hidden;
+  position: relative;
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border-radius: 1rem;
+  border-radius: .5rem;
   height: 250px;
   width: 250px;
 }
@@ -85,6 +99,25 @@ button:active {
   color: white;
   text-align: center;
 }
+.st-was{
+  background-color: var(--main)!important;
+}
+.st-was div{
+  color: var(--main2)!important;
+}
+.st-was-not{
+  background-color: #b33f3f !important;
+}
+.st-was-not div{
+  color: var(--main2)!important;
+}
 .bold{
   font-weight: bold;
+}
+.controls{
+  position: absolute;
+  bottom: 0;
+  width: 100% !important;
+  display: flex;
+  justify-content: space-between;
 }

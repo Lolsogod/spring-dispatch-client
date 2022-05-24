@@ -1,5 +1,6 @@
 import React, {useState, useContext} from "react";
 import {AuthContext} from "../context/AuthContext";
+import axios from "axios";
 
 export const AuthPage = () =>{
     const auth = useContext(AuthContext)
@@ -11,10 +12,13 @@ export const AuthPage = () =>{
     }
 
     const loginHandler = async () => {
-        const data ={ token: true, userId: 1}
-        if(form.email === "admin@admin.admin" && form.password === "admin") auth.login(data.token, data.userId)
-        else alert("Incorrect login or password")
+        axios.post("/authenticate",{
+            username: form.email,
+            password: form.password
+        },).then(res => auth.login(res.data.token, 1))
+            .catch(e=>console.log(e))
     }
+
 
     const registerHandler = async () => {
         alert("потом сделаю")
