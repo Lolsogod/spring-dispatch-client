@@ -4,20 +4,34 @@ const storageName = "userData"
 export const useAuth = () =>{
     const [token, setToken] = useState(null);
     const [ready, setReady] = useState(false)
-    const [userId, setUserId] = useState(null);
+    const [role, setRole] = useState(null);
+    const [userId, setUserId] = useState(false)
+    const [email, setEmail] = useState(null);
 
-    const login = useCallback((jwtToken, id) => {
+    const parseJwt = (token) => {
+        if (!token) { return; }
+        const base64Url = token.split('.')[1];
+        const base64 = base64Url.replace('-', '+').replace('_', '/');
+        return JSON.parse(window.atob(base64));
+    }
+
+    const login = useCallback((jwtToken) => {
         setToken(jwtToken);
-        setUserId(id);
+        const parsed = parseJwt(jwtToken);
+        setRole(parsed.role);
+        setUserId(parsed.jti);
+        setEmail(parsed.sub);
 
         localStorage.setItem(storageName, JSON.stringify({
-            userId: id, token: jwtToken
+             token: jwtToken
         }));
     }, [])
 
     const logout = useCallback(() => {
         setToken(null);
+        setRole(null);
         setUserId(null);
+        setEmail(null);
 
         localStorage.removeItem(storageName);
     }, [])
@@ -25,10 +39,10 @@ export const useAuth = () =>{
     useEffect(()=>{
         const data = JSON.parse(localStorage.getItem(storageName));
         if(data && data.token){
-            login(data.token,data.userId)
+            login(data.token)
         }
         setReady(true)
     }, [login])
 
-    return {login, logout, token, userId, ready}
+    return {login, logout, token, role, userId,email, ready}
 }

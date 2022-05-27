@@ -7,6 +7,7 @@ export const SchedulePage = () =>{
     const {date, time} = useDate()
     const auth = useContext(AuthContext)
 
+
     return(
         <div className={"schedulePageContainer"}>
             <nav>

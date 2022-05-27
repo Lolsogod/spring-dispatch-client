@@ -6,12 +6,12 @@ import {BrowserRouter as Router} from "react-router-dom"
 
 
 function App() {
-    const {login, logout, userId, token} = useAuth()
+    const {login, logout, token, role, userId,email} = useAuth()
     const isAuthenticated = !!token;
-    const routes = useRoutes(isAuthenticated);
+    const routes = useRoutes(isAuthenticated, role);
 
     return (
-        <AuthContext.Provider value={{token, login, logout, userId}}>
+        <AuthContext.Provider value={{token, login, logout, role, userId, email}}>
           <Router>
             <div>
                 {routes}

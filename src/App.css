@@ -4,6 +4,9 @@
   --main2: #1F2327;
   --main3: #262A2D;
 }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 .container{
   margin: auto;
   max-width: 500px;
@@ -44,8 +47,13 @@ button:active {
   background-color: #4d1b1b;
 }
 /*top*/
-.schedulePageContainer{
+.schedulePageContainer, .userPageContainer{
   margin: 3rem;
+}
+.flat-table{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 .logo{
   margin: 0;
@@ -76,10 +84,10 @@ button:active {
 .item:first-child{
   background-color: #3c464f !important;
 }
-.item:nth-child(odd) {
+.item:nth-child(odd), .flat-item:nth-child(odd){
   background-color: var(--main2);
 }
-.item:nth-child(even) {
+.item:nth-child(even),.flat-item:nth-child(even) {
   background-color: var(--main3);
 }
 .item{
@@ -98,6 +106,19 @@ button:active {
   width: 175px;
   color: white;
   text-align: center;
+}
+.flat-item{
+  align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  border-radius: .5rem;
+  margin-bottom: 1rem;
+}
+.flat-item div{
+  padding: 1rem
+}
+.para-date{
+  background-color: rgba(0, 0, 0, 0.10)
 }
 .st-was{
   background-color: var(--main)!important;
@@ -120,4 +141,39 @@ button:active {
   width: 100% !important;
   display: flex;
   justify-content: space-between;
+}
+/*switch*/
+.switch{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.switch a{
+  color: var(--main);
+  text-decoration: none;
+  padding: 1rem;
+  width: 5rem;
+}
+.switch .active{
+  font-weight: bold;
+  border-bottom: 3px solid;
+}
+input{
+  margin:.5rem 0;
+  padding:.5rem;
+  border-radius: .25rem;
+  border: 3px solid #595959;
+  background-color: var(--main3);
+  color: #ffffff;
+}
+input:focus{
+  outline: none !important;
+  border: 3px solid var(--main);
+}
+input::placeholder {
+  color: #bdbdbd;
+}
+.error-msg{
+  color: #cc4747;
+  margin: 1rem;
 }
