@@ -47,7 +47,7 @@ button:active {
   background-color: #4d1b1b;
 }
 /*top*/
-.schedulePageContainer, .userPageContainer{
+.schedulePageContainer, .userPageContainer, .decan-container{
   margin: 3rem;
 }
 .flat-table{
@@ -176,4 +176,10 @@ input::placeholder {
 .error-msg{
   color: #cc4747;
   margin: 1rem;
+}
+/*decan*/
+.teacher-link{
+  display: block;
+  color: white;
+  text-decoration: none;
 }

@@ -2,7 +2,7 @@ import React,{useState, useContext} from "react";
 import axios from "axios";
 import {AuthContext} from "../context/AuthContext";
 
-export const Card = ({date,audit, teacher, type, subject, state, id, edit=true, flat=false}) => {
+export const Card = ({date,audit, teacher, type, subject, state, id, checkDate, edit=true, flat=false, decan=false}) => {
     const auth = useContext(AuthContext)
     //fast and stable client/server state change
     const [clientState, setClientState] = useState(state);
@@ -15,12 +15,15 @@ export const Card = ({date,audit, teacher, type, subject, state, id, edit=true, 
             .catch(() =>setClientState(lastCorrectState))
     }
     if (flat){
+        let d = Date.parse(checkDate)
+        let resd =d.getHours()+ ":" +d.getMinutes();
         return (
             <div className={`flat-item st-${clientState}`}  >
                 <div className="para-date bold">{date}</div>
                 <div>{audit}</div>
                 <div className={"bold"}>{subject.name}</div>
                 <div>({type})</div>
+                <div>{resd}</div>
             </div>
         )
     }
@@ -33,6 +36,7 @@ export const Card = ({date,audit, teacher, type, subject, state, id, edit=true, 
             <div>{teacher.name}</div>
             {!!edit && <div className={"controls"}>
                 <button onClick={()=>attendanceStateHandler("was")}>✔</button>
+                {/*<input type="time" />*/}
                 <button onClick={()=>attendanceStateHandler("was-not")} className={"btnRed"}>✘</button>
             </div>}
         </div>

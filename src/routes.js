@@ -6,7 +6,7 @@ import {UserViewPage} from  "./pages/UserViewPage"
 import {DecanPage} from "./pages/DeacnPage";
 import {Login} from "./components/Login";
 import {Register} from "./components/Register";
-import {DecanTable} from "./components/DecanTable";
+import {DecanUserPage} from "./pages/DecanUserPage";
 
 export const useRoutes = (isAuthenticated, role) => {
     if (isAuthenticated){
@@ -21,9 +21,13 @@ export const useRoutes = (isAuthenticated, role) => {
         if (role === "decan"){
             return(
                 <Routes>
-                    <Route path="teachers" element={<DecanPage />}>
-
-                    </Route>
+                    {/*<Route path="/" element={<AuthPage />}>
+                        <Route path="login" element={<Login/>}/>
+                        <Route path="register" element={<Register/>}/>
+                        <Route path="/" element={<Navigate to="login" />} />
+                    </Route>*/}
+                    <Route path="teachers" element={<DecanPage />}/>
+                    <Route path="teacher/:id" element={<DecanUserPage />}/>
                     <Route path="*" element={<Navigate to="/teachers" />} />
                 </Routes>
             )
