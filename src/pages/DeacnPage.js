@@ -5,7 +5,6 @@ import {Outlet} from  "react-router-dom"
 import { NavLink } from "react-router-dom";
 
 
-
 export const DecanPage = () =>{
     const auth = useContext(AuthContext)
     const [teachers,setTeachers] = useState([]);
@@ -20,14 +19,16 @@ export const DecanPage = () =>{
                 <h1 className={"logo"}>DiSP</h1>
                 <div className={"logout"} onClick={auth.logout}>x</div>
             </nav>
-            {!!teachers && <div className="teachers-list">
-                {teachers.map((teacher, index) =>{
-                    return(
-                        <NavLink className="teacher-link" id={index} to={`/teacher/${teacher.userId}`}>
-                        {index+1}. {teacher.name}
-                        </NavLink>)})}
-            </div>}
-            <Outlet/>
+                <div className="horizontal-container-2">
+                {!!teachers && <div className="teachers-list">
+                    {teachers.map((teacher, index) =>{
+                        return(
+                            <NavLink className="teacher-link" key={index} to={`/${teacher.userId}`}>
+                            {index+1}. {teacher.name}
+                            </NavLink>)})}
+                </div>}
+                    <Outlet/>
+            </div>
         </div>
     )
 }

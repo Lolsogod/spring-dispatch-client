@@ -12,6 +12,7 @@ function App() {
 
     return (
         <AuthContext.Provider value={{token, login, logout, role, userId, email}}>
+            {console.log(`Logged in as: ${userId}`)}
           <Router>
             <div>
                 {routes}

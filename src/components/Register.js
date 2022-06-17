@@ -10,13 +10,41 @@ export const Register = () =>{
     }
     const [error, setError] = useState("");
     const registerHandler = async () => {
-        axios.post(`/register`,{
-            email: form.email,
-            password: form.password,
-            role: "teacher",
-            name: form.name
-        }).then(()=>alert("Зареган."))
-            .catch(e=>setError(e.response.data.message))
+        let formIsValid = true
+        if(!form.password || !form.email || !form.name){
+            formIsValid = false
+            setError("Поля не могут быть пустыми")
+        }
+        else if (typeof form.email !== "undefined") {
+            let lastAtPos = form.email.lastIndexOf("@");
+            let lastDotPos = form.email.lastIndexOf(".");
+            if (
+                !(
+                    lastAtPos < lastDotPos &&
+                    lastAtPos > 0 &&
+                    form.email.indexOf("@@") === -1 &&
+                    lastDotPos > 2 &&
+                    form.email.length - lastDotPos > 2
+                )
+            ) {
+                formIsValid = false;
+                setError("Некоректный email.");
+            }
+        }
+        console.log(form.password.length)
+        if(formIsValid && form.password.length < 6){
+            formIsValid = false
+            setError("Минимальная длинна пароля - 6")
+        }
+        if(formIsValid){
+            axios.post(`/register`,{
+                email: form.email,
+                password: form.password,
+                role: "teacher",
+                name: form.name
+            }).then(()=>alert("Зареган."))
+                .catch(e=>setError(e.response.data.message))
+        }
     }
 
     return(

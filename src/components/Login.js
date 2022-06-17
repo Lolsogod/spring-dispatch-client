@@ -13,11 +13,35 @@ export const Login = () =>{
     }
 
     const loginHandler = async () => {
-        axios.post("/authenticate",{
-            username: form.email,
-            password: form.password
-        },).then(res => auth.login(res.data.token))
-            .catch(e=>setError(e.response.data.message))
+        let formIsValid = true
+        if(!form.password || !form.email){
+            formIsValid = false
+            setError("Поля не могут быть пустыми")
+        }
+        else if (typeof form.email !== "undefined") {
+            let lastAtPos = form.email.lastIndexOf("@");
+            let lastDotPos = form.email.lastIndexOf(".");
+            if (
+                !(
+                    lastAtPos < lastDotPos &&
+                    lastAtPos > 0 &&
+                    form.email.indexOf("@@") === -1 &&
+                    lastDotPos > 2 &&
+                    form.email.length - lastDotPos > 2
+                )
+            ) {
+                formIsValid = false;
+                setError("Некоректный email.");
+            }
+        }
+
+        if(formIsValid){
+            axios.post("/authenticate",{
+                username: form.email,
+                password: form.password
+            },).then(res => auth.login(res.data.token))
+                .catch(e=>setError(e.response.data.message))
+        }
     }
     return(
         <div>
