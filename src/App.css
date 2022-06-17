@@ -36,18 +36,19 @@ button:active {
   background-color: #2E4D1B;
 }
 .btnRed{
-  background-color: #b33f3f;
+  background-color: #b33f3f!important;
 }
 .btnRed:hover{
   color: white;
-  background-color: #802d2d
+  background-color: #802d2d!important;
 }
 .btnRed:active {
   color: white;
-  background-color: #4d1b1b;
+  background-color: #4d1b1b!important;
 }
 /*top*/
-.schedulePageContainer, .userPageContainer, .decan-container{
+.schedulePageContainer, .userPageContainer,
+.decan-container, .admin-container{
   margin: 3rem;
 }
 .flat-table{
@@ -82,6 +83,9 @@ button:active {
   height: 250px;
   width: 100%;
 }
+.row.weekday{
+  height: 50px;
+}
 .not-current{
   background-color: #3c464f !important;
 }
@@ -102,6 +106,9 @@ button:active {
   border-radius: .5rem;
   height: 250px;
   width: 250px;
+}
+.item.weekday{
+  height: 50px;
 }
 .item div{
   width: 175px;
@@ -149,6 +156,19 @@ button:active {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+}
+.admin-nav{
+  display: flex;
+  gap: 10px;
+}
+.admin-nav a{
+  color: var(--main);
+  text-decoration: none;
+  padding: 1rem;
+}
+.admin-nav .active{
+  font-weight: bold;
+  border-bottom: 3px solid;
 }
 /*switch*/
 .switch{

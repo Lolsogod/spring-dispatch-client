@@ -3,6 +3,7 @@ import {AuthContext} from "../context/AuthContext";
 import axios from "axios";
 import {Card} from "../components/Card";
 import {ExplEditor} from "../components/ExplEditor";
+import {NavLink} from "react-router-dom";
 
 
 export const UserViewPage = () =>{
@@ -37,11 +38,17 @@ export const UserViewPage = () =>{
 
 
     return(
+
         <div className={"userPageContainer"}>
             <nav>
                 <h1 className={"logo"}>DiSP</h1>
                 <div className={"logout"} onClick={auth.logout}>x</div>
             </nav>
+            <div className="admin-nav">
+                <NavLink to="/stats">Статистика</NavLink>
+                <NavLink to="/schedule">Расписание</NavLink>
+            </div>
+
             <div className="horizontal-container">
                 {!! rows && <div className={"flat-table"}>
                     <h2>Здравствуйте, {rows[0].teacher.name}! Ваше кол-во пропусков - {misses}</h2>

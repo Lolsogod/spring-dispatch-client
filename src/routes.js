@@ -7,8 +7,25 @@ import {DecanPage} from "./pages/DeacnPage";
 import {Login} from "./components/Login";
 import {Register} from "./components/Register";
 import {DecanUserPage} from "./pages/DecanUserPage";
+import {AdminPage} from "./pages/AdminPage";
+import {UserEditPage} from "./components/admin/UserEditPage";
+import {ScheduleEditPage} from "./components/admin/ScheduleEditPage";
+import {RaspEditor} from "./components/admin/RaspEditor";
+import {UserSchedulePage} from "./pages/UserSchedulePage";
 
 export const useRoutes = (isAuthenticated, role) => {
+    if (role === "admin"){
+        return(
+            <Routes>
+                <Route path="/" element={<AdminPage />}>
+                    <Route path="users" element={<UserEditPage/>}/>
+                    <Route path="schedule" element={<ScheduleEditPage/>}/>
+                    <Route path="/" element={<Navigate to="users" />} />
+                </Route>
+                <Route path="*" element={<Navigate to="/users" />} />
+            </Routes>
+        )
+    }
     if (isAuthenticated){
         if (role === "dispatcher"){
             return(
@@ -19,7 +36,6 @@ export const useRoutes = (isAuthenticated, role) => {
             )
         }
         if (role === "decan"){
-            //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
             return(
                 <Routes>
 
@@ -37,8 +53,9 @@ export const useRoutes = (isAuthenticated, role) => {
         }
         return(
             <Routes>
-                <Route path="schedule" element={<UserViewPage />} />
-                <Route path="*" element={<Navigate to="/schedule" />} />
+                <Route path="stats" element={<UserViewPage />} />
+                <Route path="schedule" element={<UserSchedulePage/>} />
+                <Route path="*" element={<Navigate to="/stats" />} />
             </Routes>
         )
     }
