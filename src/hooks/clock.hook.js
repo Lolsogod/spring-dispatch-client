@@ -37,10 +37,10 @@ export const useDate = () => {
     const day = today.toLocaleDateString(locale, { weekday: 'long' });
     const date = `${day}, ${today.getDate()} ${today.toLocaleDateString(locale, { month: 'long' })}\n\n`;
 
-    //const hour = today.getHours();
+    //const time="08:10"
 
     const time = today.toLocaleTimeString(locale, { hour: 'numeric', hour12: false, minute: 'numeric' });
-    let paraNum = 2;
+    let paraNum = getNum(time);
 
     return {date, time, paraNum, paraTimes, getNum, isInRange};
 };

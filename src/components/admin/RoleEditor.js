@@ -16,7 +16,8 @@ export const RoleEditor = ({userId, name, role}) =>{
             .catch(e=>alert(e.response.data.message))
     }
     return(
-        <div>{name} 
+        <div className="role-editor">
+            <span className="role-ed-name">{name} ({userId})</span>
             <select value={curRole} onChange={changeHandler} id="roles" name="roles">
                 <option value="teacher">teacher</option>
                 <option value="dispatcher">dispatcher</option>

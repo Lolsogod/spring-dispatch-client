@@ -31,7 +31,7 @@ export const ExplEditor = paraId =>{
         <>{!!curPara && <div className="expl">
             <div className="text-right">
                 Директору сгту
-                <br/>комуто
+                <br/>Яковлеву Сергею Максимовичу
                 <br/>от преподавателя
                 <br/>{curPara.teacher.name}
             </div>

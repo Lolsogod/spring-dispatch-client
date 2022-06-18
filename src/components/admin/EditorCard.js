@@ -67,6 +67,7 @@ export const EditorCard = ({num, active, audit, type="лекц", id, adder=false
                         <option value="прак">прак</option>
                     </select>
                     <input type="text" name="audit"
+                           placeholder={"Аудитория..."}
                            required onChange={changeHandler}
                            value={form.audit}/><br/>
                     <button onClick={addPrototype}>Добавить</button>
@@ -89,10 +90,11 @@ export const EditorCard = ({num, active, audit, type="лекц", id, adder=false
                 <option value="прак">прак</option>
             </select>
             <input type="text" name="audit"
+                   placeholder={"Аудитория..."}
                    required onChange={changeHandler}
                    value={form.audit}/><br/>
             <button onClick={changePrototype}>Изменить</button>
-            <button className="reserve-btn btnRed" onClick={disablePrototype}>X</button>
+            <button className="reserve-btn btnRed" onClick={disablePrototype}>✘</button>
         </div>
     )
 }

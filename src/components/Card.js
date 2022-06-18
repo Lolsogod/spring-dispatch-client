@@ -5,7 +5,7 @@ import {useDate} from "../hooks/clock.hook";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faClock, faBan, faPersonWalking} from "@fortawesome/free-solid-svg-icons"
 
-export const Card = ({date,audit, teacher, type, subject, state, id, checkDate, dispatcher,
+export const Card = ({date,audit, teacher, type, subject, state, id, checkTime, dispatcher,
                          edit=true, flat=false, decan=false, paraTime, current=false}) => {
     const auth = useContext(AuthContext)
     //smooth client/server state change
@@ -49,11 +49,9 @@ export const Card = ({date,audit, teacher, type, subject, state, id, checkDate, 
             })
     }
     if (flat){
-        let d = new Date(checkDate)
-        let resd =d.getHours()+ ":" +d.getMinutes();
         return (
             <div className={`flat-item st-${clientState}`}  >
-                <div className="para-date"><b>{date}</b>  {!!checkDate && "- " + resd}</div>
+                <div className="para-date"><b>{date}</b>  {!!checkTime && "- " + checkTime}</div>
                 <div>{audit}</div>
                 <div className={"bold"}>{subject.name}</div>
                 <div>({type})</div>

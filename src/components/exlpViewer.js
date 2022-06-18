@@ -16,7 +16,7 @@ export const ExlpViewer = paraId =>{
         <>{!!expl && <div className="expl">
             <div className="text-right">
                 Директору сгту
-                <br/>комуто
+                <br/>Яковлеву Сергею Максимовичу
                 <br/>от преподавателя
                 <br/>{expl.para.teacher.name}
             </div>

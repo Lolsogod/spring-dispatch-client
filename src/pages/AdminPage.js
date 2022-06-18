@@ -14,6 +14,7 @@ export const AdminPage = () =>{
                 <NavLink to="/users">Пользователи</NavLink>
                 <NavLink to="/schedule">Расписание</NavLink>
             </div>
+            <br/>
             <Outlet/>
         </div>
     )

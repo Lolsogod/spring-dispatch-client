@@ -323,3 +323,24 @@ input[type="time"]{
 h5{
   margin: 0;
 }
+.role-editor{
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.role-ed-name{
+  min-width: 15rem;
+}
+select{
+  margin:.2rem 0;
+  padding:.5rem;
+  border-radius: .25rem;
+  border: 3px solid #595959;
+  background-color: var(--main3);
+  background-color: var(--main3);
+  color: #ffffff;
+}
+select:focus{
+  outline: none !important;
+  border: 3px solid var(--main);
+}
